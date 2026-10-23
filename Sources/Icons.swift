@@ -3,6 +3,27 @@ import AppKit
 /// Template artwork shared by the menu bar and device rows.
 /// Shapes match the keyboard and mouse used in the project illustration.
 func deviceIcon(_ kind: String) -> NSImage {
+    if kind == "headphones" {
+        let image = NSImage(size: NSSize(width: 20, height: 18), flipped: false) { _ in
+            NSColor.black.setStroke()
+            let arch = NSBezierPath()
+            arch.lineWidth = 1.5
+            arch.lineCapStyle = .round
+            arch.move(to: NSPoint(x: 3, y: 5))
+            arch.line(to: NSPoint(x: 3, y: 9))
+            arch.curve(to: NSPoint(x: 17, y: 9), controlPoint1: NSPoint(x: 3, y: 18), controlPoint2: NSPoint(x: 17, y: 18))
+            arch.line(to: NSPoint(x: 17, y: 5))
+            arch.stroke()
+            for x: CGFloat in [2, 14] {
+                let cup = NSBezierPath(roundedRect: NSRect(x: x, y: 2, width: 4, height: 7), xRadius: 1.6, yRadius: 1.6)
+                cup.lineWidth = 1.5
+                cup.stroke()
+            }
+            return true
+        }
+        image.isTemplate = true
+        return image
+    }
     let keyboard = kind == "keyboard"
     let size = keyboard ? NSSize(width: 24, height: 18) : NSSize(width: 15, height: 18)
     let image = NSImage(size: size, flipped: false) { rect in

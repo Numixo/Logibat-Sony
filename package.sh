@@ -10,7 +10,7 @@ case "$APP_ARCH" in
     *) echo "Unsupported architecture: $APP_ARCH" >&2; exit 1 ;;
 esac
 VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' Info.plist)"
-ARCHIVE="Logibat-$VERSION-macOS-$LABEL.zip"
+ARCHIVE="Logibat-Sony-$VERSION-macOS-$LABEL.zip"
 codesign --verify --strict Logibat.app
 plutil -lint Logibat.app/Contents/Info.plist
 ditto -c -k --sequesterRsrc --keepParent Logibat.app "dist/$ARCHIVE"
